@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="changeBtn">Change</button>
+
+    <script>
+      const color = [
+        "red",
+        "blue",
+        "green",
+        "yellow",
+        "purple",
+        "pink",
+        "black",
+      ];
+      function getRandomColor(array) {
+        const randomIndex = Math.floor(Math.random() * array.length);
+        return array[randomIndex];
+      }
+      let btn = document.getElementById("changeBtn");
+
+      btn.addEventListener("click", (e) => {
+        const randomColor = getRandomColor(color);
+        document.body.style.backgroundColor = randomColor;
+      });
+    </script>
+  </body>
+</html>

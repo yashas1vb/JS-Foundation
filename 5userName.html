@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" id="userName">
+      <input id="username" type="text" placeholder="Enter username:" />
+
+      <input type="submit" value="submit" />
+    </form>
+
+    <script>
+      document.getElementById("userName").addEventListener("submit", (e) => {
+        e.preventDefault();
+        let username = document.getElementById("username").value;
+        let a = username.charAt(0) !== username.charAt(0).toUpperCase();
+        let b = username.charAt(0).toUpperCase() + username.slice(1);
+        let user = a ? b : username;
+
+        console.log(user);
+
+        // if (username.charAt(0) !== username.charAt(0).toUpperCase()) {
+        //   username = username.charAt(0).toUpperCase() + username.slice(1);
+        //   console.log(username);
+        // }
+      });
+      // console.log(username);
+
+      // console.log(p);
+    </script>
+  </body>
+</html>

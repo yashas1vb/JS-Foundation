@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add List Items</title>
+  </head>
+  <body>
+    <h1>What you will learn :</h1>
+    <ul id="itemList"></ul>
+    <button id="addItemButton">Add Item</button>
+    <p id="message"></p>
+
+    <script>
+      const items = ["Html", "css", "Javascript", "Nodejs", "Sql"];
+      let currentIndex = 0;
+
+      // Add event listener to the button
+      document
+        .getElementById("addItemButton")
+        .addEventListener("click", function () {
+          const messageElement = document.getElementById("message");
+          const listElement = document.getElementById("itemList");
+
+          if (currentIndex < items.length) {
+            // Add the next item to the list
+            const newItem = document.createElement("li");
+            newItem.textContent = items[currentIndex];
+            listElement.appendChild(newItem);
+            currentIndex++;
+          } else {
+            // Display message when all items are added
+            messageElement.textContent = "All items have been added!";
+          }
+        });
+    </script>
+  </body>
+</html>

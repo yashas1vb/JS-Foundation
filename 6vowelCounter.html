@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" id="vowelCount">
+      <input type="text" placeholder="Enter your word" id="userText" />
+      <button type="button" id="btn">Check</button>
+      <span id="text">Total vowels: <span id="vowel"></span></span>
+    </form>
+    <script>
+      document.getElementById("btn").addEventListener("click", () => {
+        let string = document.getElementById("userText").value.toLowerCase();
+        let vowels = "aeiou";
+        let count = 0;
+
+        for (let char of string) {
+          if (vowels.includes(char)) {
+            count++;
+          }
+        }
+
+        document.getElementById("vowel").textContent = count;
+      });
+    </script>
+  </body>
+</html>

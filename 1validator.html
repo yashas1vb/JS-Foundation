@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" id="password">
+      <h2>Password Validation</h2>
+
+      <input id="newPass" type="text" placeholder="Enter new password" />
+
+      <input id="confirm" type="text" placeholder="Confirm new password" />
+
+      <input type="submit" value="submit" />
+
+      <span id="errorMsg"></span>
+    </form>
+    <script>
+      let form = document.getElementById("password");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        let newPassword = document.getElementById("newPass").value;
+        let confirmPassword = document.getElementById("confirm").value;
+        let errorMsg = document.getElementById("errorMsg");
+
+        if (newPassword !== confirmPassword) {
+          console.log(
+            "Password didn't match. Password validation unsuccessful"
+          );
+          errorMsg.textContent = "Password didn't match. Try Again.";
+        } else {
+          console.log("Password Matched. Password validation Successful.");
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .container {
+        /* border: 1px solid black; */
+        display: flex;
+        flex-direction: column;
+        height: 50vh;
+      }
+      .options {
+        display: flex;
+      }
+      .balanceBox {
+        display: none;
+      }
+      .withdrawBox {
+        display: none;
+      }
+      .depoBox {
+        display: none;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>User Transaction</h1>
+      <!-- <p id="username"></p> -->
+      <p>user1</p>
+      <div class="options">
+        <button class="choices" id="balance">Balance</button>
+        <button class="choices" id="Withdraw">Withdraw</button>
+        <button class="choices" id="Deposit">Deposit</button>
+      </div>
+      <div class="balanceBox">
+        <h1>Your balance is :</h1>
+        <span id="balanceAmt"></span>
+      </div>
+      <div class="withdrawBox">
+        <h1>Enter amount you want to withdraw :</h1>
+        <input type="number" id="wAmount" />
+        <button id="bal-after-withDraw">Show Balance</button>
+      </div>
+      <div class="depoBox">
+        <h1>Enter amount you want to deposite :</h1>
+        <input type="number" id="dAmount" />
+        <button id="bal-after-depo">Show balance</button>
+      </div>
+    </div>
+
+    <script>
+      //Pre defined Object with username and balance
+      let userDetails = {
+        name: "user1",
+        balance: 50000,
+      };
+
+      //DOM elements
+      let userChoice = document.querySelectorAll(".choices");
+      let checkBal = document.getElementById("balance");
+      let checkBalClass = document.getElementsByClassName("balanceBox")[0];
+      let withDraw = document.getElementById("Withdraw");
+      let withDrawClass = document.getElementsByClassName("withdrawBox")[0];
+      let depo = document.getElementById("Deposit");
+      let depoClass = document.getElementsByClassName("depoBox")[0];
+      let choice;
+
+      let amountWD = document.getElementById("wAmount");
+      let amountDP = document.getElementById("dAmount");
+
+      let withDraw_btn = document.getElementById("bal-after-withDraw");
+      let depo_btn = document.getElementById("bal-after-depo");
+
+      //function to show balance
+      function balance() {
+        checkBal.style.display = "none";
+        withDraw.style.display = "none";
+        depo.style.display = "none";
+        checkBalClass.style.display = "block";
+        document.getElementById("balanceAmt").innerText = userDetails.balance;
+        // checkBalClass.style.display = "block";
+      }
+      function withdrawAmount() {
+        checkBal.style.display = "none";
+        withDraw.style.display = "none";
+        depo.style.display = "none";
+        withDrawClass.style.display = "block";
+
+        withDraw_btn.addEventListener("click", (e) => {
+          withDrawClass.style.display = "none";
+          let a = Number(amountWD.value);
+          let b = Number(userDetails.balance - a);
+          checkBalClass.style.display = "block";
+          document.getElementById("balanceAmt").innerText = b;
+          userDetails.balance -= a;
+          console.log(userDetails.balance);
+        });
+      }
+      function depoAmount() {
+        checkBal.style.display = "none";
+        withDraw.style.display = "none";
+        depo.style.display = "none";
+        depoClass.style.display = "block";
+
+        depo_btn.addEventListener("click", (e) => {
+          depoClass.style.display = "none";
+          let a = Number(amountDP.value);
+          let b = Number(userDetails.balance + a);
+          checkBalClass.style.display = "block";
+          document.getElementById("balanceAmt").innerText = b;
+        });
+      }
+      userChoice.forEach((choice) =>
+        choice.addEventListener("click", (e) => {
+          choice = e.target.id;
+
+          switch (choice) {
+            case "balance":
+              balance();
+              break;
+            case "Withdraw":
+              withdrawAmount();
+              break;
+            case "Deposit":
+              depoAmount();
+              break;
+            default:
+              console.log("invalid choice");
+          }
+        })
+      );
+    </script>
+  </body>
+</html>

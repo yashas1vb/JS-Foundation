@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input id="color1" type="text" placeholder="Enter color 1 :" />
+    <input id="color2" type="text" placeholder="Enter color 2 :" />
+    <button onclick="mixer()">Submit</button>
+    <span id="display"></span>
+    <script>
+      function mixer() {
+        let c1 = document.getElementById("color1").value;
+        let c2 = document.getElementById("color2").value;
+        let span = document.getElementById("display").value;
+        switch (c1 && c2) {
+          case "red" && "blue":
+            console.log("color obtained is purple");
+            span.textContent = "New color is Purple!";
+            break;
+          case "red" && "yellow":
+            console.log("color obtained is orange");
+            span.textContent = "New color is orange";
+            break;
+          default:
+            span.textContent = "Invalid Color combination";
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        height: 200vh;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+      }
+
+      .pbar {
+        /* display: flex; */
+        /* align-items: center; */
+        /* justify-content: center; */
+        border: 1px solid black;
+        height: 30px;
+        width: 500px;
+      }
+      .pr {
+        height: 28px;
+        width: 0%;
+        background-color: black;
+      }
+    </style>
+    <title>ProgressBar</title>
+  </head>
+  <body>
+    <header>
+      <div class="pbar">
+        <div class="pr"></div>
+      </div>
+    </header>
+
+    <script>
+      function updatePbar() {
+        const { scrollTop, scrollHeight } = document.documentElement;
+        const scrollPercent = (scrollTop / (scrollHeight - window.innerHeight)) * 100;
+        console.log(scrollPercent + "%");
+        document.querySelector(".pr").style.width = scrollPercent + "%";
+      }
+      document.addEventListener("scroll", updatePbar);
+    </script>
+  </body>
+</html>

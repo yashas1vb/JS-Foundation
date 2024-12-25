@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="Marks">
+      <input id="s1" type="number" placeholder="Marks of student 1" />
+      <input id="s2" type="number" placeholder="Marks of student 2" />
+      <input id="s3" type="number" placeholder="Marks of student 3" />
+      <input id="s4" type="number" placeholder="Marks of student 4" />
+      <input id="s5" type="number" placeholder="Marks of student 5" />
+      <button type="button" id="submitBtn">Submit</button>
+
+      <h2>Student with highest marks:</h2>
+      <span id="display"></span>
+    </form>
+
+    <script>
+      document.getElementById("submitBtn").addEventListener("click", () => {
+        // Retrieve input values and default to 0 if empty
+        let a = parseInt(document.getElementById("s1").value) || 0;
+        let b = parseInt(document.getElementById("s2").value) || 0;
+        let c = parseInt(document.getElementById("s3").value) || 0;
+        let d = parseInt(document.getElementById("s4").value) || 0;
+        let e = parseInt(document.getElementById("s5").value) || 0;
+
+        console.log("Input values:", a, b, c, d, e);
+
+        // Find the maximum mark using nested ternary operators
+        let max =
+          a > b
+            ? a > c
+              ? a > d
+                ? a > e
+                  ? a
+                  : e
+                : d > e
+                ? d
+                : e
+              : c > d
+              ? c > e
+                ? c
+                : e
+              : d > e
+              ? d
+              : e
+            : b > c
+            ? b > d
+              ? b > e
+                ? b
+                : e
+              : d > e
+              ? d
+              : e
+            : c > d
+            ? c > e
+              ? c
+              : e
+            : d > e
+            ? d
+            : e;
+
+        console.log(max);
+        document.getElementById(
+          "display"
+        ).textContent = `The highest marks are: ${max}`;
+      });
+    </script>
+  </body>
+</html>

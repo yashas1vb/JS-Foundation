@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .highlight {
+        background-color: yellow;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="para">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo eligendi
+      natus a soluta exercitationem nisi in distinctio at impedit inventore!
+    </p>
+  </body>
+
+  <script>
+    let para = document.getElementById("para");
+    let text = para.textContent;
+
+    let strings = text.split(" ");
+
+    let appendArray = [];
+
+    for (i = 0; i < strings.length; i++) {
+      if (strings[i].length <= 8) {
+        strings[i] = `<span class="highlight">${strings[i]}</span>`;
+        console.log(strings[i]);
+      }
+    }
+
+    console.log(strings);
+
+    para.innerHTML = strings.join(" ");
+  </script>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      #image {
+        position: relative;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <img id="image" src="5458405.png" alt="" />
+
+    <script>
+      let move = 10;
+      let x = 0;
+      let y = 0;
+      let myImg = document.getElementById("image");
+      document.addEventListener("keydown", (event) => {
+        event.preventDefault();
+
+        if (event.key.startsWith("Arrow")) {
+          switch (event.key) {
+            case "ArrowUp":
+              y -= move;
+              break;
+            case "ArrowDown":
+              y += move;
+              break;
+            case "ArrowLeft":
+              x -= move;
+              break;
+            case "ArrowRight":
+              x += move;
+              break;
+          }
+          myImg.style.top = `${y}px`;
+          myImg.style.left = `${x}px`;
+        }
+        // console.log(e.key);
+      });
+    </script>
+  </body>
+</html>
